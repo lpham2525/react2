@@ -1,27 +1,16 @@
 import React, { Component } from 'react'
+import User from './components/User'
 
 class App extends Component {
 
   state = {
     count: 0,
     name: '',
-    displayName: '',
     movie: '',
-    displayMovie: '',
     game: '',
-    displayGame: '',
     song: '',
-    displaySong: '',
     book: '',
-    displayBook:''
-  }
-
-  handleIncrement = () => {
-    this.setState({ count: this.state.count + 1})
-  }
-
-  handleDecrement = () => {
-    this.setState({ count: this.state.count - 1 })
+    user: {}
   }
 
   handleInputChange = event => {
@@ -39,22 +28,16 @@ class App extends Component {
         game: this.state.game,
         book: this.state.book
       },
-      displayName: this.state.name, name: '',
-      displayMovie: this.state.movie, movie: '',
-      displayGame: this.state.game, game:'',
-      displaySong: this.state.song, song: '',
-      displayBook: this.state.book, book: ''})
+      name: '',
+      movie: '',
+      game:'',
+      song: '',
+      book: ''})
   }
 
   render () {
     return (
       <>
-      <h1>Submit your name and favorites for the following categories!</h1>
-      <h1>Name: {this.state.user.name}</h1>
-      <h1>Movie: {this.state.user.movie}</h1>
-      <h1>Game: {this.state.user.game}</h1>
-      <h1>Song: {this.state.user.song}</h1>
-      <h1>Book: {this.state.user.book}</h1>
       <form>
         <p>
           <label htmlFor='name'>name</label>
@@ -103,10 +86,8 @@ class App extends Component {
         </p>
         <button onClick={this.handleSubmit}>Submit Favorites</button>
       </form>
-      <hr />
-      <h1>Count: {this.state.count}</h1>
-      <button onClick={this.handleIncrement}>Plus</button>
-      <button onClick={this.handleDecrement}>Minus</button>
+      <br />
+        { this.state.user.name ? <User user={this.state.user} /> : null }
       </>
     )
   }
