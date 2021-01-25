@@ -11,7 +11,7 @@ class App extends Component {
     game: '',
     song: '',
     book: '',
-    user: {}
+    user: []
   }
 
   handleInputChange = event => {
@@ -21,20 +21,37 @@ class App extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
+    let users = JSON.parse(JSON.stringify(this.state.users))
+    users.push({
+      name: this.state.name,
+      movie: this.state.movie,
+      song: this.state.song,
+      game: this.state.game,
+      book: this.state.book
+    })
+
     this.setState({ 
-      user: {
-        name: this.state.name,
-        movie: this.state.movie,
-        song: this.state.song,
-        game: this.state.game,
-        book: this.state.book
-      },
+      users,
       name: '',
       movie: '',
       game:'',
       song: '',
-      book: ''})
-  }
+      book: ''
+    })
+  //   this.setState({ 
+  //     user: {
+  //       name: this.state.name,
+  //       movie: this.state.movie,
+  //       song: this.state.song,
+  //       game: this.state.game,
+  //       book: this.state.book
+  //     },
+  //     name: '',
+  //     movie: '',
+  //     game:'',
+  //     song: '',
+  //     book: ''})
+  // }
 
   render () {
     return (
@@ -49,10 +66,14 @@ class App extends Component {
         handleInputChange={this.state.handleInputChange}
         handleSubmit={this.state.handleSubmit}
       />
-        { this.state.user.name ? <User user={this.state.user} /> : null }
+      {
+        this.state.users.map(user => <User user={user} />
+
+        }
+      }
       </>
     )
   }
-}
+
 
 export default App
