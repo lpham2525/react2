@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import User from './components/User'
+import Form from './components/Form'
 
 class App extends Component {
 
@@ -38,55 +39,16 @@ class App extends Component {
   render () {
     return (
       <>
-      <form>
-        <p>
-          <label htmlFor='name'>name</label>
-          <input 
-          type='text' 
-          name='name' 
-          id='name'
-          onChange={this.handleInputChange}
-          value={this.state.name} />
-        </p>
-        <p>
-          <label htmlFor='movie'>movie</label>
-          <input 
-          type='text' 
-          name='movie' 
-          id='movie'
-          onChange={this.handleInputChange}
-          value={this.state.movie} />
-        </p>
-        <p>
-          <label htmlFor='game'>game</label>
-          <input 
-          type='text' 
-          name='game' 
-          id='game'
-          onChange={this.handleInputChange}
-          value={this.state.game} />
-        </p>
-        <p>
-          <label htmlFor='song'>song</label>
-          <input 
-          type='text' 
-          name='song' 
-          id='song'
-          onChange={this.handleInputChange}
-          value={this.state.song} />
-        </p>
-        <p>
-          <label htmlFor='book'>book</label>
-          <input 
-          type='text' 
-          name='book' 
-          id='book'
-          onChange={this.handleInputChange}
-          value={this.state.book} />
-        </p>
-        <button onClick={this.handleSubmit}>Submit Favorites</button>
-      </form>
-      <br />
+      
+      <Form 
+        name={this.state.name}
+        movie={this.state.movie}
+        game={this.state.game}
+        song={this.state.song}
+        book={this.state.book}
+        handleInputChange={this.state.handleInputChange}
+        handleSubmit={this.state.handleSubmit}
+      />
         { this.state.user.name ? <User user={this.state.user} /> : null }
       </>
     )
